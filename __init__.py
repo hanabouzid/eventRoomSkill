@@ -13,6 +13,7 @@ from googleapiclient.discovery import build
 from oauth2client.file import Storage
 from oauth2client.client import OAuth2WebServerFlow
 from oauth2client import tools
+import string
 import pytz
 UTC_TZ = u'+00:00'
 SCOPES = ['https://www.googleapis.com/auth/calendar']
@@ -188,8 +189,9 @@ class CreateEvent(MycroftSkill):
 
         reservation = self.get_response('do you need to make a reservation for a meeting room? Yes or No?')
         if reservation == 'yes':
+            s = ",".join(freerooms)
             #print("les salles disponibles a cette date sont", freerooms)
-            self.speak_dialog("freerooms",data={", ".join(freerooms)})
+            self.speak_dialog("freerooms",data={s})
             room = self.get_response('which Room do you want to make a reservation for??')
             for i in range(0, len(freerooms)):
                 if (freerooms[i] == room):
