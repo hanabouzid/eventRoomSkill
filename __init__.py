@@ -133,7 +133,7 @@ class CreateEvent(MycroftSkill):
                         body = {
                             "timeMin": datestart,
                             "timeMax": datend,
-                            "timeZone": 'US/Central',
+                            "timeZone": 'Tunisia/Tunis',
                             "items": [{"id":mail}]
                         }
                         eventsResult = service.freebusy().query(body=body).execute()
@@ -172,7 +172,7 @@ class CreateEvent(MycroftSkill):
             body = {
                 "timeMin": datestart,
                 "timeMax": datend,
-                "timeZone": 'US/Central',
+                "timeZone": 'Tunisia/Tunis',
                 "items": [{"id": emailroom[i]}]
             }
             roomResult = service.freebusy().query(body=body).execute()
@@ -189,13 +189,13 @@ class CreateEvent(MycroftSkill):
         reservation = self.get_response('do you need to make a reservation for a meeting room? Yes or No?')
         if reservation == 'yes':
             #print("les salles disponibles a cette date sont", freerooms)
-            self.speak_dialog("freerooms")
+            self.speak_dialog("freerooms",data={freerooms})
             room = self.get_response('which Room do you want to make a reservation for??')
             for i in range(0, len(freerooms)):
                 if (freerooms[i] == room):
                     #ajouter l'email de room dans la liste des attendees
                     attendeess.append({'email': freemails[i]})
-                    
+
         #creation d'un evenement
         event = {
             'summary': tittle,
@@ -207,7 +207,7 @@ class CreateEvent(MycroftSkill):
             },
             'end': {
                 'dateTime': datend,
-                'timeZone': 'America/Los_Angeles',
+                'timeZone': 'Tunisia/Tunis',
             },
             'recurrence': [
                 'RRULE:FREQ=DAILY;COUNT=1'
