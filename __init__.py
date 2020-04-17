@@ -109,7 +109,7 @@ class CreateEvent(MycroftSkill):
         adsmails = []
         #attendee est la liste des invités qui sont disponibles
         attendee=[]
-        exist = False
+
         for person in connections:
             emails = person.get('emailAddresses', [])
             names = person.get('names', [])
@@ -123,6 +123,7 @@ class CreateEvent(MycroftSkill):
             print(n)
             j = 0
             while j < n:
+                exist = False
                 x = self.get_response("who do you want to invite")
                 for l in range(0,len(nameListe)):
                     if x == nameListe[l]:
@@ -149,8 +150,7 @@ class CreateEvent(MycroftSkill):
                                     #ajouter l'email de x ala liste des attendee
                                 elif (i == 'busy' and statut[i] != []):
                                     self.speak_dialog("busy")
-                    elif x != nameListe[l]:
-                        exist = False
+
                 if exist == False:
                     self.speak_dialog("notexist")
                 j += 1
