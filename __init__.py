@@ -149,7 +149,7 @@ class CreateEvent(MycroftSkill):
                                     #ajouter l'email de x ala liste des attendee
                                 elif (i == 'busy' and statut[i] != []):
                                     self.speak_dialog("busy")
-                    else:
+                    elif x != nameListe[l]:
                         exist = False
                 if exist == False:
                     self.speak_dialog("notexist")
