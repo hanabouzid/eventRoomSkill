@@ -135,7 +135,7 @@ class CreateEvent(MycroftSkill):
                         body = {
                             "timeMin": datestart,
                             "timeMax": datend,
-                            "timeZone": 'Tunisia/Tunis',
+                            "timeZone": 'America/Los_Angeles',
                             "items": [{"id":mail}]
                         }
                         eventsResult = service.freebusy().query(body=body).execute()
@@ -167,13 +167,13 @@ class CreateEvent(MycroftSkill):
         #liste des emails de toutes les salles de focus
         freemails=[]
         freerooms = []
-        nameroom =["FOCUS-1ere-Midoune Meeting Room","FOCUS-1ere-Aiguilles Meeting Room","FOCUS-1ere-Barrouta Meeting Room","FOCUS-1ere-Kantaoui Meeting Room","Gorges Meeting Room","Ichkeul Meeting Room","Khemir Meeting Room","Tamaghza Meeting Room","Friguia Meeting Room","Ksour Meeting Room","Medeina Meeting Room","Thyna Meeting Room"]
+        nameroom =["Midoune Meeting Room","Aiguilles Meeting Room","Barrouta Meeting Room","Kantaoui Meeting Room","Gorges Meeting Room","Ichkeul Meeting Room","Khemir Meeting Room","Tamaghza Meeting Room","Friguia Meeting Room","Ksour Meeting Room","Medeina Meeting Room","Thyna Meeting Room"]
         emailroom=["focus-corporation.com_3436373433373035363932@resource.calendar.google.com","focus-corporation.com_3132323634363237333835@resource.calendar.google.com","focus-corporation.com_3335353934333838383834@resource.calendar.google.com","focus-corporation.com_3335343331353831343533@resource.calendar.google.com","focus-corporation.com_3436383331343336343130@resource.calendar.google.com","focus-corporation.com_36323631393136363531@resource.calendar.google.com","focus-corporation.com_3935343631343936373336@resource.calendar.google.com","focus-corporation.com_3739333735323735393039@resource.calendar.google.com","focus-corporation.com_3132343934363632383933@resource.calendar.google.com","focus-corporation.com_@resource.calendar.google.com", "focus-corporation.com_@resource.calendar.google.com","focus-corporation.com_@resource.calendar.google.com"]
         for i in range(0, len(emailroom)):
             body = {
                 "timeMin": datestart,
                 "timeMax": datend,
-                "timeZone": 'Tunisia/Tunis',
+                "timeZone": 'America/Los_Angeles',
                 "items": [{"id": emailroom[i]}]
             }
             roomResult = service.freebusy().query(body=body).execute()
@@ -209,7 +209,7 @@ class CreateEvent(MycroftSkill):
             },
             'end': {
                 'dateTime': datend,
-                'timeZone': 'Tunisia/Tunis',
+                'timeZone': 'America/Los_Angeles',
             },
             'recurrence': [
                 'RRULE:FREQ=DAILY;COUNT=1'
