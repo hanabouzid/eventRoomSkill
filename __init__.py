@@ -189,9 +189,9 @@ class CreateEvent(MycroftSkill):
 
         reservation = self.get_response('do you need to make a reservation for a meeting room? Yes or No?')
         if reservation == 'yes':
-            s=","
+            s = ",".join(freerooms)
             #print("les salles disponibles a cette date sont", freerooms)
-            self.speak_dialog("freerooms",data={s.join(freerooms)})
+            self.speak_dialog("freerooms",data={"s":s})
             room = self.get_response('which Room do you want to make a reservation for??')
             for i in range(0, len(freerooms)):
                 if (freerooms[i] == room):
